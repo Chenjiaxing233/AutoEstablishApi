@@ -12,26 +12,26 @@ http.get(loginUrl,(res)=>{
     res.on('end',()=>{})
 })
 
-// http.get(pageUrl, function(res) {
-//     var html = '';
-//     res.on('data', function(data) {
-//         html += data;
-//     });
-//     res.on('end', function() {
-//         console.log('html',html);
-//         fs.readdir('./',function(err,file){
-//             if(err){
-//                 throw err;
-//             }
-//             console.log(file)
-//             if(file.indexOf('api')>-1){
-//                 console.log('删除api')
-//                 commons.deleteall('./api')
-//                 commons.writeApi(html)
-//             }else{
-//                 commons.writeApi(html)
-//             }
-//         })
+http.get(pageUrl, function(res) {
+    var html = '';
+    res.on('data', function(data) {
+        html += data;
+    });
+    res.on('end', function() {
+        console.log('html',html);
+        fs.readdir('./',function(err,file){
+            if(err){
+                throw err;
+            }
+            console.log(file)
+            if(file.indexOf('api')>-1){
+                console.log('删除api')
+                commons.deleteall('./api')
+                commons.writeApi(html)
+            }else{
+                commons.writeApi(html)
+            }
+        })
     
-//     });
-// });
+    });
+});
